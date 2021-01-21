@@ -1,4 +1,4 @@
-# Regras
+# Rules
 
 - [ ] At least 1 room per student has to have something to do in the story
 - [ ] At least 2 active "Person" in game
