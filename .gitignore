@@ -1,6 +1,7 @@
 Build/
 Index/
 
+*.log
 *.iFiction
 *.skein
 *.blurb
