@@ -178,17 +178,33 @@ Second Floor is a region. The Upper Hall, The Large Bedroom, the medium bedroom,
 Chapter 3 Things
 
 Player is in Porch.
-Main key is in Porch.
 
 Section 3.1 On the Porch
 
-Wooden chair is a chair. Wooden chair is in Porch.
 
-Bucket is a container. Bucket is in Porch.
+[ Wooden Chair ]
+Wooden chair is a chair in Porch.
 
+[ Gnome ]
+Gnome is a thing in the Porch.
+There is a Main Key. [This places it "off-stage" until we move it somewhere else]
+Main Key can be found or lost.
+Main Key is lost.
+Instead of examining gnome:
+	if main key is off-stage:
+		say "It's just a decorative Gnome. It seems there's something under it.";
+	otherwise:
+		say "Remember to tell your family that it is not a good place to hide a key.".
+Instead of looking under gnome when main key is off-stage:
+	say "You found the main key under the Gnome. Your family needs to find a better way to hide the key.";
+	move main key to the porch.
+
+[ Bucket ]
+Bucket is a container in Porch.
+
+[ Old Box ]
 Candle is a thing.
 String is a thing.
-
 Old box is a container. Old box is in Porch.
 Candle, String are in Old box.
 
