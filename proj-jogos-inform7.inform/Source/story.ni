@@ -5,8 +5,8 @@
 		[-] 1 room por aluno tem que ter alguma coisa para fazer na história
 		[-] 2 "Person" ativos no jogo
 		[-] 1 porta trancada
-		[√] 1 container (Cupboard na Living Room)
-		[√] 1 supporter (Sofa na Living Room)
+		[√] 2 container (Cupboard in Living Room, Toolbox in Garage)
+		[√] 2 supporter (Sofa in Living Room, Work Bench in Garage)
 ]
 
 
@@ -79,6 +79,27 @@ Carry out licking:
 		say "That would probably get you a restraining order.";
 	otherwise:
 		say "You shouldn't lick [the noun], it'd be very gross.".
+		
+Section 1.4 Fixing Things
+
+Fixing it with is an action applying to two touchable things.
+
+Understand "fix [something] with [something]" as fixing it with.
+
+Carry out fixing:
+	if the noun is Broken Broom:
+		if has_fixed_the_broom is false:
+			if the second noun is Silver Tape:			
+				say "You fixed the broom.";
+				now has_fixed_the_broom is true;
+				now player carries the broken broom;
+			otherwise: 
+				say "You can't fixed the broom with that.";
+		otherwise:
+			say "It's already fixed. You can't do better than that.";
+	otherwise:
+		say "It's not even broken. Why do you wanna fix that?".
+
 
 Chapter 2 Geography
 
@@ -98,7 +119,9 @@ The matching key of the Main door is Main key.
 Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food."
 
 [[ Garage ]]
-Garage is a room, west of Living Room.
+Garage is a room, west of Living Room. "I don't know if we could even call this place a garage, it's crowded with boxes. 
+There's no way to put a car in here.
+Beyond all this trash, maybe something can be useful.".
 
 [[ Kitchen ]]
 Kitchen is a room, north of garage.
@@ -201,6 +224,44 @@ Instead of examining the Wiping cloth:
 Section 3.3 In the inner bathroom
 
 A spider is a neuter animal in the Inner Bathroom. "A cute little brown spider. It probably won't kill you."
+
+Section 3.4 Garage
+
+[Pile of boxes]
+Pile of boxes is a thing in the Garage.
+Instead of taking Pile of boxes, say "There are a lot of boxes. You can't carry all of them. Besides that, this boxes probably would be useless.".
+The description of pile of boxes is "I guess every single box is just trash".
+
+[ Broom ]
+has_fixed_the_broom is initially false.
+A Broken broom is a thing in the Garage.
+Instead of examining the Broken broom:
+	if has_fixed_the_broom is true:
+		say "It looks like a new broom!";
+	otherwise:
+		say "The broomstick is broken, but it doesn't seem hard to fix.".
+
+[Work bench]
+Work Bench is a supporter in the garage.
+Instead of examining Work Bench, say "It's a work bench. But you are no specialist in tools, so it's just a table with a toolbox.".
+
+[ Toolbox ]
+A Spanner is a thing.
+A Screwdriver is a thing.
+A Silver Tape is a thing.
+A Hammer is a thing.
+Toolbox is an openable closed container on Work Bench.
+Spanner, Silver Tape, Hammer and Screwdriver are in the Toolbox.
+Instead of taking toolbox, say "It's too heavy. It's better just take what you need. ".
+The description of Spanner is "It's a tool. I don't think it would be useful for you today.".
+The description of Hammer is "You don't have any nails to driving in with a hammer. But it's also great to destroy things!".
+The description of Screwdriver is "You don't have any screws to screw. Maybe you would need it to unscrew some screws.".
+Instead of examining Silver Tape:
+	if has_been_in_lavabo is true: 
+		say "It's a great tool to fix things.";
+	otherwise:
+		say "Maybe it would be useful to fix the broken broom.".
+
 
 Chapter 4 People
 
