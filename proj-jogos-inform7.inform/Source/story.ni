@@ -130,7 +130,13 @@ Kitchen is a room, north of garage.
 Dining Room is a room, east of kitchen, north of Living Room.
 
 [[ Home Office ]]
-Home Office is a room, east of Living Room.
+Home Office is a room, east of Living Room. "The office has a lot of stuff. There is an old computer, a cabinet, a bookshelf, a wall clock and a portrait. There is also a window."
+A wall clock, a cabinet, a bookshelf, a portrait and a window are scenery in the home office.
+The description of the wall clock is "It's an old clock but it stills works. It's [time of day]."
+The description of the cabinet is "An white cabinet that has seen better days. It's getting yellowish. Maybe there's something useful inside."
+The description of the bookshelf is "There are a lot of books. Seeing those books remind you of your childhood."
+The description of the portrait is "A portrait with a photo of you, your aunt and your uncle. You three are happy on the picture."
+The description of the window is "Through the window you can see the outside of the house."
 
 [[ Lavabo ]]
 Lavabo is a room. "This place is kinda dirty. Maybe you should clean it. To the west you see the hall".
@@ -221,7 +227,7 @@ Instead of examining the Wiping cloth:
 	if has_been_in_lavabo is true:
 		say "This cloth might be useful to clean the Lavabo.";
 	otherwise:
-		say "This cloth might be useful if you need clean something.".
+		say "This cloth might be useful if you need to clean something.".
 
 Section 3.3 In the inner bathroom
 
@@ -239,6 +245,19 @@ Instead of examining cobweb:
 		say "Thank god the spider that made this is just a little cute animal.";
 	otherwise:
 		say "A spider has been here... I hope it's not a dangerous spider.".
+
+Section 3.5 Home Office
+
+[ Cabinet ]
+A bleach bottle is a thing.
+Cabinet is an openable closed container in the Home Office.
+A bleach bottle is in the Cabinet.
+Instead of examining the bleach bottle:
+	if has_been_in_lavabo is true:
+		say "This bleach bottle might be useful to clean the Lavabo.";
+	otherwise:
+		say "This bleach bottle might be useful if you need to clean something.".
+
 
 [Pile of boxes]
 Pile of boxes is a thing in the Garage.
@@ -306,4 +325,5 @@ Figure of InitialPicture is the file "house-bright.jpg"
 
 When play begins:
 	Display the Figure of InitialPicture;
+	now the time of day is 1:12 PM;
 	Say "The afternoon is incredibly hot as the sun shines strongly on the lawn.".
