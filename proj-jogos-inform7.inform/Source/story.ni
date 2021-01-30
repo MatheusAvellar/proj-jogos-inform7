@@ -223,9 +223,20 @@ Instead of examining the Wiping cloth:
 
 Section 3.3 In the inner bathroom
 
+has_found_spider is initially false.
+After going to the Inner bathroom:
+	now has_found_spider is true.
 A spider is a neuter animal in the Inner Bathroom. "A cute little brown spider. It probably won't kill you."
 
 Section 3.4 Garage
+
+[Cobweb]
+Cobweb is a thing in the Garage.
+Instead of examining cobweb:
+	if has_found_spider is true:
+		say "Thank god the spider that made this is just a little cute animal.";
+	otherwise:
+		say "A spider has been here... I hope it's not a dangerous spider.".
 
 [Pile of boxes]
 Pile of boxes is a thing in the Garage.
