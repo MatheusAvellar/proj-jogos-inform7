@@ -137,7 +137,8 @@ Lavabo is a room. "This place is kinda dirty. Maybe you should clean it. To the 
 Lavabo is east of Hall. 
 has_been_in_lavabo is initially false.
 After going to the Lavabo:
-	now has_been_in_lavabo is true.
+	now has_been_in_lavabo is true;
+	try looking.
 
 [ Second Floor ]
 [[ Upper Hall ]]
@@ -248,10 +249,17 @@ The description of pile of boxes is "I guess every single box is just trash".
 has_fixed_the_broom is initially false.
 A Broken broom is a thing in the Garage.
 Instead of examining the Broken broom:
-	if has_fixed_the_broom is true:
-		say "It looks like a new broom!";
+	if has_been_in_lavabo is true:
+		if has_fixed_the_broom is true:
+			say "It looks like a new broom! Now it's ready to be used to clean the lavabo.";
+		otherwise:
+			say "The broomstick is broken, but it doesn't seem hard to fix. Probably you will need to fix it if you want to clean the lavabo.";
 	otherwise:
-		say "The broomstick is broken, but it doesn't seem hard to fix.".
+		if has_fixed_the_broom is true:
+			say "It looks like a new broom!";
+		otherwise:
+			say "The broomstick is broken, but it doesn't seem hard to fix.".
+		
 
 [Work bench]
 Work Bench is a supporter in the garage.
@@ -269,10 +277,10 @@ The description of Spanner is "It's a tool. I don't think it would be useful for
 The description of Hammer is "You don't have any nails to driving in with a hammer. But it's also great to destroy things!".
 The description of Screwdriver is "You don't have any screws to screw. Maybe you would need it to unscrew some screws.".
 Instead of examining Silver Tape:
-	if has_been_in_lavabo is true: 
-		say "It's a great tool to fix things.";
+	if player carries broken broom: 
+		say "Maybe it would be useful to fix the broken broom.";
 	otherwise:
-		say "Maybe it would be useful to fix the broken broom.".
+		say "It's a great tool to fix things.".
 
 
 Chapter 4 People
