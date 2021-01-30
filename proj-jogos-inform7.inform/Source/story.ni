@@ -107,10 +107,10 @@ Section 2.1 The House
 
 [ First Floor ]
 [[ Porch ]]
-Porch is a room.
+Porch is a room. "To the north you can see the main door of the house.".
 
 [[ Hall ]]
-Hall is room.
+Hall is room. "To the east you see the entrance to lavabo. To the north there is the living room. The staircase leads you to the upper hall".
 Main Stairs is a staircase, above Hall and below Upper Hall.
 Main door is a door. It is north of Porch and south of Hall. Main door is closed and locked.
 The matching key of the Main door is Main key.
@@ -133,7 +133,8 @@ Dining Room is a room, east of kitchen, north of Living Room.
 Home Office is a room, east of Living Room.
 
 [[ Lavabo ]]
-Lavabo is a room, east of Hall. "The lavabo needs to be cleaned.".
+Lavabo is a room. "This place is kinda dirty. Maybe you should clean it. To the west you see the hall".
+Lavabo is east of Hall. 
 has_been_in_lavabo is initially false.
 After going to the Lavabo:
 	now has_been_in_lavabo is true.
