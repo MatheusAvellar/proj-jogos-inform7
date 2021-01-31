@@ -90,10 +90,10 @@ Understand "fix [something] with [something]" as fixing it with.
 
 Carry out fixing:
 	if the noun is Broken Broom:
-		if has_fixed_the_broom is false:
+		if has_fixed_broom is false:
 			if the second noun is Silver Tape:			
 				say "You fixed the broom.";
-				now has_fixed_the_broom is true;
+				now has_fixed_broom is true;
 				now player carries the broken broom;
 			otherwise: 
 				say "You can't fixed the broom with that.";
@@ -110,12 +110,15 @@ Understand "clean [any room]" as cleaning it.
 
 Carry out cleaning:
 	if the noun is Lavabo:
-		if player carries sponge and player carries broken broom and player carries wiping cloth:
-			if player is in lavabo:				
-				say "You cleaned it! Of course you didn't make a good job, but at least it's usable right now. Now it's time to go to the bed.";
-				now has_cleaned_lavabo is true;
+		if player carries sponge and player carries bleach bottle and player carries wiping cloth and player carries broken broom:
+			if has_fixed_broom is true:
+				if player is in lavabo:				
+					say "You cleaned it! Of course you didn't make a good job, but at least it's usable right now. Now it's time to go to the bed.";
+					now has_cleaned_lavabo is true;
+				otherwise: 
+					say "I think you already have everything, but you have to be in the lavabo to clean the lavabo. It's pretty obvious, isn't it?";
 			otherwise: 
-				say "I think you already have everything, but you have to be in the lavabo to clean the lavabo. It's pretty obvious, isn't it?";
+				say "You need to fix this broken broom first.";
 		otherwise: 
 			say "You don't have everything needed to clean this. It's better search for somewhat else.";
 	otherwise: 
@@ -130,13 +133,13 @@ Section 2.1 The House
 Porch is a room. "To the north you can see the main door of the house.".
 
 [[ Hall ]]
-Hall is room. "It's just the hall of the house.[paragraph break]To the east you see the entrance to lavabo. To the north there is the living room. The staircase leads you to the upper hall".
+Hall is room. "It's just the hall of the house.[paragraph break]To the east you see the entrance to lavabo. To the north there is the living room. The staircase leads you to the upper hall. To the south there's the porch, you don't wanna come back there, it's 40 degrees outside.".
 Main Stairs is a staircase, above Hall and below Upper Hall.
 Main door is a door. It is north of Porch and south of Hall. Main door is closed and locked.
 The matching key of the Main door is Main key.
 
 [[ Living Room]]
-Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food.[paragraph break]To the west you see the garage. To the north there's the dinning room. To the east you can see the home office. To the south there's the porch, you don't wanna come back there, it's 40 degrees outside.".
+Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food.[paragraph break]To the west you see the garage. To the north there's the dinning room. To the east you can see the home office. To the south you can go back to the hall.".
 After going to the Living Room:
 	now has_been_in_living_room is true;
 	try looking
@@ -167,9 +170,9 @@ After going to the Lavabo:
 	try looking.
 After looking when player is in lavabo:
 	if has_cleaned_lavabo is true:
-		say "Now this place is kinda clean. One hour from now it's gonna be as dirty as before you cleaned it. It's a beach house, it will never be really clean. [paragraph break]To the west you see the hall.";
+		say "Now this place is kinda clean. One hour from now it's gonna be as dirty as before you cleaned it. It's a beach house, it will never be really clean";
 	otherwise:
-		say "This place is kinda dirty. Maybe you should clean it. To the west you see the hall".
+		say "This place is kinda dirty. Maybe you should clean it".
 
 [ Second Floor ]
 [[ Upper Hall ]]
@@ -317,12 +320,12 @@ The description of pile of boxes is "I guess every single box is just trash".
 A Broken broom is a thing in the Garage.
 Instead of examining the Broken broom:
 	if has_been_in_lavabo is true:
-		if has_fixed_the_broom is true:
+		if has_fixed_broom is true:
 			say "It looks like a new broom! Now it's ready to be used to clean the lavabo.";
 		otherwise:
 			say "The broomstick is broken, but it doesn't seem hard to fix. Probably you will need to fix it if you want to clean the lavabo.";
 	otherwise:
-		if has_fixed_the_broom is true:
+		if has_fixed_broom is true:
 			say "It looks like a new broom!";
 		otherwise:
 			say "The broomstick is broken, but it doesn't seem hard to fix.".
@@ -412,5 +415,5 @@ has_been_in_living_room is initially false.
 has_cleaned_lavabo is initially false.
 has_been_in_lavabo is initially false.
 has_been_in_roof is initially false.
-has_fixed_the_broom is initially false.
+has_fixed_broom is initially false.
 has_found_spider is initially false.
