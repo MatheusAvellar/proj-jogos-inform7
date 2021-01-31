@@ -52,10 +52,11 @@ Understand "pet [something]" as petting.
 Carry out petting:
 	if the noun is an animal:
 		say "You pet [the noun]. You grew closer together!";
-	if the noun is a person:
-		say "That's no way to treat someone!";
 	otherwise:
-		say "You pet [the noun]. That's kinda weird. Let's hope no one saw you!".
+		if the noun is a person:
+			say "That's no way to treat someone!";
+		otherwise:
+			say "You pet [the noun]. That's kinda weird. Let's hope no one saw you!".
 
 Section 1.3.2 Kissing animals
 
@@ -75,10 +76,11 @@ Understand "lick [something]" as licking.
 Carry out licking:
 	if the noun is an animal:
 		say "You shudder as you lick [the noun]. [regarding the noun][They] doesn't react.";
-	if the noun is a person:
-		say "That would probably get you a restraining order.";
 	otherwise:
-		say "You shouldn't lick [the noun], it'd be very gross.".
+		if the noun is a person:
+			say "That would probably get you a restraining order.";
+		otherwise:
+			say "You shouldn't lick [the noun], it'd be very gross.".
 		
 Section 1.4 Fixing Things
 
@@ -128,31 +130,29 @@ Section 2.1 The House
 Porch is a room. "To the north you can see the main door of the house.".
 
 [[ Hall ]]
-Hall is room. "To the east you see the entrance to lavabo. To the north there is the living room. The staircase leads you to the upper hall".
+Hall is room. "It's just the hall of the house.[paragraph break]To the east you see the entrance to lavabo. To the north there is the living room. The staircase leads you to the upper hall".
 Main Stairs is a staircase, above Hall and below Upper Hall.
 Main door is a door. It is north of Porch and south of Hall. Main door is closed and locked.
 The matching key of the Main door is Main key.
 
 [[ Living Room]]
-Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food.".
+Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food.[paragraph break]To the west you see the garage. To the north there's the dinning room. To the east you can see the home office. To the south there's the porch, you don't wanna come back there, it's 40 degrees outside.".
 has_been_in_living_room is initially false.
 After going to the Living Room:
 	now has_been_in_living_room is true;
 	try looking
 
 [[ Garage ]]
-Garage is a room, west of Living Room. "I don't know if we could even call this place a garage, it's crowded with boxes. 
-There's no way to put a car in here.
-Beyond all this trash, maybe something can be useful.".
+Garage is a room, west of Living Room. "I don't know if we could even call this place a garage, it's crowded with boxes. There's no way to put a car in here. Beyond all this trash, maybe something can be useful.[paragraph break]To the north you see the kitchen. To the east  there's the living room.".
 
 [[ Kitchen ]]
-Kitchen is a room, north of garage.
+Kitchen is a room, north of garage. "To the south you see the garage. To the east there's the dinning room.".
 
 [[ Dining Room ]]
-Dining Room is a room, east of kitchen, north of Living Room. "The dining room is decorated with furniture from the 60's."
+Dining Room is a room, east of kitchen, north of Living Room. "The dining room is decorated with furniture from the 60's.[paragraph break]To the west you see the kitchen. To the south there's the living room.".
 
 [[ Home Office ]]
-Home Office is a room, east of Living Room. "The office has a lot of stuff. There is an old computer, a cabinet, a bookshelf, a wall clock and a portrait. There is also a window."
+Home Office is a room, east of Living Room. "The office has a lot of stuff. There is an old computer, a cabinet, a bookshelf, a wall clock and a portrait. There is also a window.[paragraph break]To west you can go back to the living room.".
 A wall clock, a cabinet, a bookshelf, a portrait and a window are scenery in the home office.
 The description of the wall clock is "It's an old clock but it stills works. It's [time of day]."
 The description of the cabinet is "An white cabinet that has seen better days. It's getting yellowish. Maybe there's something useful inside."
@@ -161,7 +161,7 @@ The description of the portrait is "A portrait with a photo of you, your aunt an
 The description of the window is "Through the window you can see the outside of the house."
 
 [[ Lavabo ]]
-Lavabo is a room.
+Lavabo is a room. "To the west you can go back to the hall".
 Lavabo is east of Hall. 
 has_cleaned_lavabo is initially false.
 has_been_in_lavabo is initially false.
@@ -176,18 +176,22 @@ After looking when player is in lavabo:
 
 [ Second Floor ]
 [[ Upper Hall ]]
-Upper Hall is a room.
+Upper Hall is a room. "It's just the hall of the second floor.[paragraph break]To the west you see the smal bedroom. To the north you see the large bedroom. To the west you see the Medium bedroom. To the south there's the Bathroom."
 
 [[ Large Bedroom ]]
-Large Bedroom is a room, north of Upper Hall.
-Medium Bedroom is a room, east of Upper Hall.
-Small Bedroom is a room, west of Upper Hall.
+Large Bedroom is a room, north of Upper Hall. "It's the largier bedroom of the house. You can see some beds and a bathroom. I guess this bedroom is restricted to the owners of the house. [paragraph break]To the west you see the inner bathroom. To the south you can see the upper hall.".
+
+[[ Medium Bedroom ]]
+Medium Bedroom is a room, east of Upper Hall. "It's another bedroom. As expected, there's a lot of mattress on the floor.[paragraph break]To the west you see the upper hall.".
+
+[[ Small Bedroom ]]
+Small Bedroom is a room, west of Upper Hall. "Seriously, I don't how they put this amount of mattress in this room. You can't even walk here. The floor is made out of mattress.[paragraph break]To the east you see the upper hall.".
 
 [[ Bathroom ]]
-Bathroom is a room, south of Upper Hall.
+Bathroom is a room, south of Upper Hall. "Another bathroom of the house. This is much cleaner though.[paragraph break]To the north you can see the upper hall."
 
 [[ Inner Bathroom ]]
-Inner Bathroom is a room, west of Large Bedroom. "The inner bathroom is a bit damp. There is a sink with a round mirror above it. A faint light shimmers through a small window above a bathtub."
+Inner Bathroom is a room, west of Large Bedroom. "The inner bathroom is a bit damp. There is a sink with a round mirror above it. A faint light shimmers through a small window above a bathtub.[paragraph break]To the east you see the large bedroom. There's also a window that leads you to the roof."
 A mirror, a sink, a bathtub, and a small window are scenery in the inner bathroom.
 The description of the mirror is "It's a slightly dusty rounded mirror."
 The description of the sink is "The faucet drips very slowly."
@@ -197,7 +201,12 @@ Small Window is a staircase, above Inner Bathroom and below Roof 1.
 
 [ Third Floor ]
 [[ Roof ]]
-Roof 1 is a room.
+Roof 1 is a room. "The sun burns you! This looks like hell.".
+has_been_in_roof is initially false.
+After going to the roof 1:
+	now has_been_in_roof is true;
+	try looking.
+Instead of going to the roof 1 when has_been_in_roof is true, say "NO! Don't go out there again. The sun will kill you!".
 
 [ Regions ]
 First Floor is a region. The Hall, Living Room, Garage, Kitchen, Dining Room, Home Office and Lavabo are in First Floor.
@@ -277,8 +286,10 @@ Section 3.3 In the inner bathroom
 
 has_found_spider is initially false.
 After going to the Inner bathroom:
-	now has_found_spider is true.
-A spider is a neuter animal in the Inner Bathroom. "A cute little brown spider. It probably won't kill you."
+	now has_found_spider is true;
+	try looking.
+A spider is a neuter animal in the Inner Bathroom. 
+The description of the spider is "A cute little brown spider. It probably won't kill you.".
 
 Section 3.4 Garage
 
