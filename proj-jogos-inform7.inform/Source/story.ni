@@ -137,7 +137,6 @@ The matching key of the Main door is Main key.
 
 [[ Living Room]]
 Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food.[paragraph break]To the west you see the garage. To the north there's the dinning room. To the east you can see the home office. To the south there's the porch, you don't wanna come back there, it's 40 degrees outside.".
-has_been_in_living_room is initially false.
 After going to the Living Room:
 	now has_been_in_living_room is true;
 	try looking
@@ -163,8 +162,6 @@ The description of the window is "Through the window you can see the outside of 
 [[ Lavabo ]]
 Lavabo is a room. "To the west you can go back to the hall".
 Lavabo is east of Hall. 
-has_cleaned_lavabo is initially false.
-has_been_in_lavabo is initially false.
 After going to the Lavabo:
 	now has_been_in_lavabo is true;
 	try looking.
@@ -202,7 +199,6 @@ Small Window is a staircase, above Inner Bathroom and below Roof 1.
 [ Third Floor ]
 [[ Roof ]]
 Roof 1 is a room. "The sun burns you! This looks like hell.".
-has_been_in_roof is initially false.
 After going to the roof 1:
 	now has_been_in_roof is true;
 	try looking.
@@ -225,8 +221,7 @@ Wooden chair is a chair in Porch.
 [ Gnome ]
 Gnome is a thing in the Porch.
 There is a Main Key. [This places it "off-stage" until we move it somewhere else]
-Main Key can be found or lost.
-Main Key is lost.
+Instead of taking gnome, say "Don't do it. Don't mess up with the house decoration.".
 Instead of examining gnome:
 	if main key is off-stage:
 		say "It's just a decorative Gnome. It seems there's something under it.";
@@ -284,7 +279,6 @@ Instead of examining the Wiping cloth:
 
 Section 3.3 In the inner bathroom
 
-has_found_spider is initially false.
 After going to the Inner bathroom:
 	now has_found_spider is true;
 	try looking.
@@ -320,7 +314,6 @@ Instead of taking Pile of boxes, say "There are a lot of boxes. You can't carry 
 The description of pile of boxes is "I guess every single box is just trash".
 
 [ Broom ]
-has_fixed_the_broom is initially false.
 A Broken broom is a thing in the Garage.
 Instead of examining the Broken broom:
 	if has_been_in_lavabo is true:
@@ -412,3 +405,12 @@ When play begins:
 	Display the Figure of InitialPicture;
 	now the time of day is 1:12 PM;
 	Say "The afternoon is incredibly hot as the sun shines strongly on the lawn.".
+
+Chapter 6 Variables
+
+has_been_in_living_room is initially false.
+has_cleaned_lavabo is initially false.
+has_been_in_lavabo is initially false.
+has_been_in_roof is initially false.
+has_fixed_the_broom is initially false.
+has_found_spider is initially false.
