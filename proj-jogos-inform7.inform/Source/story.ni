@@ -338,13 +338,18 @@ Instead of taking the Old mirror:
 
 [ Dining table ]
 A Dining table is a thing in the Dining room.
+The Sponge is a thing. The Sponge can be found or lost. The Sponge is lost.
 Instead of examining the Dining table:
+	now the Sponge is found;
 	if has_been_in_living_room is true:
-		say "There's an unfinished meal here. My aunt must've forgotten it.";
+		say "There's an unfinished meal at the Dining table. Your aunt must've forgotten it.";
 	otherwise:
-		say "There's an unfinished meal here. I wonder who left it here.";
-
-
+		say "There's an unfinished meal at the Dining table. You wonder who left it here.";
+	if has_been_in_lavabo is true:
+		say "You also see a Sponge on the Dining table. You could use it to clean the Lavabo.";
+	otherwise:
+		say "You also see a Sponge on the Dining table. You could use it to clean this plate later, or use it to clean something else. You should take it with you.";
+	move the Sponge to the Dining room;
 
 Chapter 4 People
 
