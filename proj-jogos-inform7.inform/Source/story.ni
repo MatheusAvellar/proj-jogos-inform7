@@ -100,7 +100,25 @@ Carry out fixing:
 	otherwise:
 		say "It's not even broken. Why do you wanna fix that?".
 
+Section 1.5 Cleaning Things
 
+Cleaning it is an action applying to one thing.
+
+Understand "clean [any room]" as cleaning it.
+
+Carry out cleaning:
+	if the noun is Lavabo:
+		if player carries sponge and player carries broken broom and player carries wiping cloth:
+			if player is in lavabo:				
+				say "You cleaned it! Of course you didn't make a good job, but at least it's usable right now. Now it's time to go to the bed.";
+				now has_cleaned_lavabo is true;
+			otherwise: 
+				say "I think you already have everything, but you have to be in the lavabo to clean the lavabo. It's pretty obvious, isn't it?";
+		otherwise: 
+			say "You don't have everything needed to clean this. It's better search for somewhat else.";
+	otherwise: 
+		say "Really? Why do you wan to clean [the noun]? Let's focus just on the Lavabo!".
+		
 Chapter 2 Geography
 
 Section 2.1 The House
@@ -143,12 +161,18 @@ The description of the portrait is "A portrait with a photo of you, your aunt an
 The description of the window is "Through the window you can see the outside of the house."
 
 [[ Lavabo ]]
-Lavabo is a room. "This place is kinda dirty. Maybe you should clean it. To the west you see the hall".
+Lavabo is a room.
 Lavabo is east of Hall. 
+has_cleaned_lavabo is initially false.
 has_been_in_lavabo is initially false.
 After going to the Lavabo:
 	now has_been_in_lavabo is true;
 	try looking.
+After looking when player is in lavabo:
+	if has_cleaned_lavabo is true:
+		say "Now this place is kinda clean. One hour from now it's gonna be as dirty as before you cleaned it. It's a beach house, it will never be really clean. [paragraph break]To the west you see the hall.";
+	otherwise:
+		say "This place is kinda dirty. Maybe you should clean it. To the west you see the hall".
 
 [ Second Floor ]
 [[ Upper Hall ]]
