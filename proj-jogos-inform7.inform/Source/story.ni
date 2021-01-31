@@ -116,7 +116,11 @@ Main door is a door. It is north of Porch and south of Hall. Main door is closed
 The matching key of the Main door is Main key.
 
 [[ Living Room]]
-Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food."
+Living Room is a room. Living room is north of Hall. "The living room smells faintly of cat food.".
+has_been_in_living_room is initially false.
+After going to the Living Room:
+	now has_been_in_living_room is true;
+	try looking
 
 [[ Garage ]]
 Garage is a room, west of Living Room. "I don't know if we could even call this place a garage, it's crowded with boxes. 
@@ -127,7 +131,7 @@ Beyond all this trash, maybe something can be useful.".
 Kitchen is a room, north of garage.
 
 [[ Dining Room ]]
-Dining Room is a room, east of kitchen, north of Living Room.
+Dining Room is a room, east of kitchen, north of Living Room. "The dining room is decorated with furniture from the 60's."
 
 [[ Home Office ]]
 Home Office is a room, east of Living Room. "The office has a lot of stuff. There is an old computer, a cabinet, a bookshelf, a wall clock and a portrait. There is also a window."
@@ -301,6 +305,30 @@ Instead of examining Silver Tape:
 	otherwise:
 		say "It's a great tool to fix things.".
 
+Section 3.6 In the Dining room
+
+[ Old Cabinet ]
+An Old Cabinet is a thing in the Dining room.
+Instead of examining the Old Cabinet, say "Seems just like an Old Cabinet, there are some plates and beverages inside."
+
+[ Old mirror ]
+An Old mirror is a thing in the Dining room.
+Instead of examining the Old mirror, say "It is a beautiful antique. It looks pretty, but you can tell it wasn't manufactured. You wonder who could have made such wonderful piece of furniture."
+Instead of taking the Old mirror:
+	if has_been_in_living_room is true:
+		say "It's written B64 followed by a surname on the back of the mirror. It's your surname. You may want to go back to the Living Room and ask your aunt about it.";
+	otherwise:
+		say "It's written B64 followed by a surname on the back of the mirror. It's your surname. You feel curious, but apparently there's nobody else in the house to tell you about this B64 thing.";
+
+[ Dining table ]
+A Dining table is a thing in the Dining room.
+Instead of examining the Dining table:
+	if has_been_in_living_room is true:
+		say "There's an unfinished meal here. My aunt must've forgotten it.";
+	otherwise:
+		say "There's an unfinished meal here. I wonder who left it here.";
+
+
 
 Chapter 4 People
 
@@ -308,6 +336,7 @@ Chapter 4 People
 The Aunt is a woman. "Your old aunt sleeps quietly on her creaky recliner."
 The Aunt is on the Reclining chair. The indefinite article of the aunt is "your".
 Instead of examining the aunt, say "You don't really know how old your aunt is, but you're pretty sure she's over 100."
+After asking the Aunt about "B64", say "Oh, he was such an amazing man. He was your great-great grandfather. His name was Breno and he was born in 1864. We used to play so many games together... I recall his favourite game had an incredibly weird but surely remarkable name: aHR0cHM6Ly95b3V0dS5iZS95VTRaWTAybFhEawo="
 
 Chapter 5 What Happens when entering
 
