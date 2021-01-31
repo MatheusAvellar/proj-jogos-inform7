@@ -124,9 +124,7 @@ There's no way to put a car in here.
 Beyond all this trash, maybe something can be useful.".
 
 [[ Kitchen ]]
-Kitchen is a room, north of garage."The Kitchen has an antique look and it's grey with dust. There are cabinets in the wall and a kitchen table right in the middle of it. You see webs all around the corners."
-The description of the Cabinets is "The Cabinets creak as you open, just to reveal a wooden Brush and some old crockery, maybe there is a thing or two that we can use"
-
+Kitchen is a room, north of garage.
 
 [[ Dining Room ]]
 Dining Room is a room, east of kitchen, north of Living Room.
@@ -318,26 +316,6 @@ Instead of examining Silver Tape:
 		say "Maybe it would be useful to fix the broken broom.";
 	otherwise:
 		say "It's a great tool to fix things.".
-		
-
-
-Section 3.6 Kitchen
-
-[ Cabinets ]
-Cabinets  is an openable closed container in the Kitchen.
-A Brush is a thing. 
-A Knife is a thing.
-Brush and Knife are in Cabinets.
-Instead of examining the Brush:
-	if has_been_in_lavabo is true:
-		say "This Brush might be useful to clean the Lavabo.";
-	otherwise:
-		say "This Brush used to be in the Lavabo .".
-
-
-[ Kitchen Table ]
-Kitchen Table is a supporter in the garage.
-Instead of examining Kitchen Table, say "This Kitchen Table is a mess, i don't know how it's still standing.".
 
 
 Chapter 4 People
