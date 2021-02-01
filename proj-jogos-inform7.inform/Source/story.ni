@@ -113,14 +113,14 @@ Carry out cleaning:
 		if player carries sponge and player carries bleach bottle and player carries wiping cloth and player carries broken broom:
 			if has_fixed_broom is true:
 				if player is in lavabo:				
-					say "You cleaned it! Of course you didn't make a good job, but at least it's usable right now. Now it's time to go to the bed.";
+					say "You cleaned it! Of course you didn't do a good job, but at least it's usable right now. Time to go to bed!";
 					now has_cleaned_lavabo is true;
 				otherwise: 
-					say "I think you already have everything, but you have to be in the lavabo to clean the lavabo. It's pretty obvious, isn't it?";
+					say "You should have everything already, but you need to be in the lavabo to clean it. It's pretty obvious, isn't it?";
 			otherwise: 
 				say "You need to fix this broken broom first.";
 		otherwise: 
-			say "You don't have everything needed to clean this. It's better search for somewhat else.";
+			say "You don't have everything needed to clean this. You should search for what you still need.";
 	otherwise: 
 		say "Really? Why do you wan to clean [the noun]? Let's focus just on the Lavabo!".
 		
@@ -133,7 +133,7 @@ Section 2.1 The House
 Porch is a room. "To the north you can see the main door of the house.".
 
 [[ Hall ]]
-Hall is room. "It's just the hall of the house.[paragraph break]To the east you see the entrance to lavabo. To the north there is the living room. The staircase leads you to the upper hall. To the south there's the porch, you don't wanna come back there, it's 40 degrees outside.".
+Hall is room. "To the east you see the entrance to lavabo. To the north there is the living room. The staircase leads you to the upper hall. To the south there's the porch — you don't wanna go back there, it's 40 degrees outside.".
 Main Stairs is a staircase, above Hall and below Upper Hall.
 Main door is a door. It is north of Porch and south of Hall. Main door is closed and locked.
 The matching key of the Main door is Main key.
@@ -145,7 +145,7 @@ After going to the Living Room:
 	try looking
 
 [[ Garage ]]
-Garage is a room, west of Living Room. "I don't know if we could even call this place a garage, it's crowded with boxes. There's no way to put a car in here. Beyond all this trash, maybe something can be useful.[paragraph break]To the north you see the kitchen. To the east  there's the living room.".
+Garage is a room, west of Living Room. "I don't know if we could even call this place a garage, it's crowded with boxes. There's no way to put a car in here. Beyond all this trash, maybe something can be useful.[paragraph break]To the north you see the kitchen. To the east is the living room.".
 
 [[ Kitchen ]]
 Kitchen is a room, north of garage. "To the south you see the garage. To the east there's the dinning room.".
@@ -163,32 +163,32 @@ The description of the portrait is "A portrait with a photo of you, your aunt an
 The description of the window is "Through the window you can see the outside of the house."
 
 [[ Lavabo ]]
-Lavabo is a room. "To the west you can go back to the hall".
+Lavabo is a room. "To the west you can go back to the hall.".
 Lavabo is east of Hall. 
 After going to the Lavabo:
 	now has_been_in_lavabo is true;
 	try looking.
 After looking when player is in lavabo:
 	if has_cleaned_lavabo is true:
-		say "Now this place is kinda clean. One hour from now it's gonna be as dirty as before you cleaned it. It's a beach house, it will never be really clean";
+		say "Now this place is kinda clean. One hour from now it's gonna be as dirty as before you cleaned it. It's a beach house, nothing here stays clean for too long.";
 	otherwise:
-		say "This place is kinda dirty. Maybe you should clean it".
+		say "This place is kinda dirty. Maybe you should clean it.".
 
 [ Second Floor ]
 [[ Upper Hall ]]
-Upper Hall is a room. "It's just the hall of the second floor.[paragraph break]To the west you see the smal bedroom. To the north you see the large bedroom. To the west you see the Medium bedroom. To the south there's the Bathroom."
+Upper Hall is a room. "To the west you see the Smal Bedroom. To the north you see the Large Bedroom. To the eest you see the Medium Bedroom. To the south there's the Bathroom."
 
 [[ Large Bedroom ]]
-Large Bedroom is a room, north of Upper Hall. "It's the largier bedroom of the house. You can see some beds and a bathroom. I guess this bedroom is restricted to the owners of the house. [paragraph break]To the west you see the inner bathroom. To the south you can see the upper hall.".
+Large Bedroom is a room, north of Upper Hall. "This is the largest bedroom of the house. You can see some beds and a bathroom. I guess this bedroom is restricted to the owners of the house.[paragraph break]To the west you see the Inner Bathroom. To the south you can see the Upper Hall.".
 
 [[ Medium Bedroom ]]
-Medium Bedroom is a room, east of Upper Hall. "It's another bedroom. As expected, there's a lot of mattress on the floor.[paragraph break]To the west you see the upper hall.".
+Medium Bedroom is a room, east of Upper Hall. "Another bedroom. As expected, there are a lot of mattresses on the floor.[paragraph break]To the west you see the Upper Hall.".
 
 [[ Small Bedroom ]]
-Small Bedroom is a room, west of Upper Hall. "Seriously, I don't how they put this amount of mattress in this room. You can't even walk here. The floor is made out of mattress.[paragraph break]To the east you see the upper hall.".
+Small Bedroom is a room, west of Upper Hall. "Seriously, I don't how they fit this many mattresses in this room. You can't even walk here. It's like the floor is made out of mattress.[paragraph break]To the east you see the Upper Hall.".
 
 [[ Bathroom ]]
-Bathroom is a room, south of Upper Hall. "Another bathroom of the house. This is much cleaner though.[paragraph break]To the north you can see the upper hall."
+Bathroom is a room, south of Upper Hall. "Another bathroom of the house. This is much cleaner though.[paragraph break]To the north you can see the Upper Hall."
 
 [[ Inner Bathroom ]]
 Inner Bathroom is a room, west of Large Bedroom. "The inner bathroom is a bit damp. There is a sink with a round mirror above it. A faint light shimmers through a small window above a bathtub.[paragraph break]To the east you see the large bedroom. There's also a window that leads you to the roof."
@@ -224,14 +224,14 @@ Wooden chair is a chair in Porch.
 [ Gnome ]
 Gnome is a thing in the Porch.
 There is a Main Key. [This places it "off-stage" until we move it somewhere else]
-Instead of taking gnome, say "Don't do it. Don't mess up with the house decoration.".
+Instead of taking gnome, say "Don't do it. Don't mess up the house decoration.".
 Instead of examining gnome:
 	if main key is off-stage:
 		say "It's just a decorative Gnome. It seems there's something under it.";
 	otherwise:
 		say "Remember to tell your family that it is not a good place to hide a key.".
 Instead of looking under gnome when main key is off-stage:
-	say "You found the main key under the Gnome. Your family needs to find a better way to hide the key.";
+	say "You see the main key under the Gnome. Your family needs to find a better place to hide the key.";
 	move main key to the porch.
 
 [ Bucket ]
@@ -249,7 +249,7 @@ Section 3.2 In the living room
 A Sofa is a chair in the Living Room.
 
 [ Reclining chair ]
-A Reclining chair is a chair in the Living Room.
+A Reclining chair is a chair in the Living Room. It is fixed in place.
 Instead of examining the Reclining chair, say "A creaky old reclining chair."
 
 [ Rug ]
@@ -270,7 +270,7 @@ After taking Painting for the first time:
 [ Cupboard ]
 An Old photo album is a thing.
 A wiping cloth is a thing.
-Cupboard is an openable closed container in the Living Room.
+Cupboard is an openable closed container in the Living Room. It is fixed in place.
 Old photo album and wiping cloth are in the Cupboard.
 Instead of examining the Cupboard, say "It's a dusty wooden cupboard."
 Instead of examining the Old photo album, say "A bunch of 20+ year old photos. You don't recognize anyone in them."
@@ -291,7 +291,7 @@ The description of the spider is "A cute little brown spider. It probably won't 
 Section 3.4 Garage
 
 [Cobweb]
-Cobweb is a thing in the Garage.
+Cobweb is a thing in the Garage. It is fixed in place.
 Instead of examining cobweb:
 	if has_found_spider is true:
 		say "Thank god the spider that made this is just a little cute animal.";
@@ -301,8 +301,8 @@ Instead of examining cobweb:
 Section 3.5 Home Office
 
 [ Cabinet ]
+Cabinet is an openable closed container in the Home Office. It is fixed in place.
 A bleach bottle is a thing.
-Cabinet is an openable closed container in the Home Office.
 A bleach bottle is in the Cabinet.
 Instead of examining the bleach bottle:
 	if has_been_in_lavabo is true:
@@ -313,7 +313,7 @@ Instead of examining the bleach bottle:
 
 [Pile of boxes]
 Pile of boxes is a thing in the Garage.
-Instead of taking Pile of boxes, say "There are a lot of boxes. You can't carry all of them. Besides that, this boxes probably would be useless.".
+Instead of taking Pile of boxes, say "There are a lot of boxes. You can't carry them all. Besides, these boxes would probably be useless.".
 The description of pile of boxes is "I guess every single box is just trash".
 
 [ Broom ]
@@ -321,9 +321,9 @@ A Broken broom is a thing in the Garage.
 Instead of examining the Broken broom:
 	if has_been_in_lavabo is true:
 		if has_fixed_broom is true:
-			say "It looks like a new broom! Now it's ready to be used to clean the lavabo.";
+			say "It looks like a new broom! Now you can use it to clean the lavabo.";
 		otherwise:
-			say "The broomstick is broken, but it doesn't seem hard to fix. Probably you will need to fix it if you want to clean the lavabo.";
+			say "The broomstick is broken, but it doesn't seem hard to fix. You'll need to fix it if you want to clean the lavabo.";
 	otherwise:
 		if has_fixed_broom is true:
 			say "It looks like a new broom!";
@@ -332,30 +332,30 @@ Instead of examining the Broken broom:
 		
 
 [Work bench]
-Work Bench is a supporter in the garage.
+Work Bench is a supporter in the garage. It is fixed in place.
 Instead of examining Work Bench, say "It's a work bench. But you are no specialist in tools, so it's just a table with a toolbox.".
 
 [ Toolbox ]
-A Spanner is a thing.
+A Wrench is a thing.
 A Screwdriver is a thing.
 A Silver Tape is a thing.
 A Hammer is a thing.
 Toolbox is an openable closed container on Work Bench.
-Spanner, Silver Tape, Hammer and Screwdriver are in the Toolbox.
-Instead of taking toolbox, say "It's too heavy. It's better just take what you need. ".
-The description of Spanner is "It's a tool. I don't think it would be useful for you today.".
-The description of Hammer is "You don't have any nails to driving in with a hammer. But it's also great to destroy things!".
-The description of Screwdriver is "You don't have any screws to screw. Maybe you would need it to unscrew some screws.".
+Wrench, Silver Tape, Hammer and Screwdriver are in the Toolbox.
+Instead of taking toolbox, say "It's too heavy. It's better to just take what you need. ".
+The description of Wrench  is "It's a tool. I don't think it'll be useful for you today.".
+The description of Hammer is "You don't have any nails to use with that hammer. But it's also great to destroy things!".
+The description of Screwdriver is "You don't have any screws to screw. Maybe you'll need the screwdriver it to unscrew some, though.".
 Instead of examining Silver Tape:
 	if player carries broken broom: 
-		say "Maybe it would be useful to fix the broken broom.";
+		say "Maybe it'll be useful to fix the broken broom.";
 	otherwise:
 		say "It's a great tool to fix things.".
 
 Section 3.6 In the Dining room
 
 [ Old Cabinet ]
-An Old Cabinet is a thing in the Dining room.
+An Old Cabinet is a thing in the Dining room. It is fixed in place.
 Instead of examining the Old Cabinet, say "Seems just like an Old Cabinet, there are some plates and beverages inside."
 
 [ Old mirror ]
@@ -363,12 +363,12 @@ An Old mirror is a thing in the Dining room.
 Instead of examining the Old mirror, say "It is a beautiful antique. It looks pretty, but you can tell it wasn't manufactured. You wonder who could have made such wonderful piece of furniture."
 Instead of taking the Old mirror:
 	if has_been_in_living_room is true:
-		say "It's written B64 followed by a surname on the back of the mirror. It's your surname. You may want to go back to the Living Room and ask your aunt about it.";
+		say "It has 'B64' followed by a surname writen on the back. It's your surname. You may want to go back to the Living Room and ask your aunt about it.";
 	otherwise:
-		say "It's written B64 followed by a surname on the back of the mirror. It's your surname. You feel curious, but apparently there's nobody else in the house to tell you about this B64 thing.";
+		say "It has 'B64' followed by a surname written on the back. It's your surname. You feel curious, but you don't know who could tell you more about this B64 thing.";
 
 [ Dining table ]
-A Dining table is a thing in the Dining room.
+A Dining table is a thing in the Dining room. It is fixed in place.
 The Sponge is a thing. The Sponge can be found or lost. The Sponge is lost.
 Instead of examining the Dining table:
 	now the Sponge is found;
