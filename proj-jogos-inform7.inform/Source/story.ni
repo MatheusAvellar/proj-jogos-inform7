@@ -256,7 +256,7 @@ Instead of examining the Reclining chair, say "A creaky old reclining chair."
 
 [ Rug ]
 An Old rug is a thing in the Living Room.
-Instead of examining the old rthing
+Instead of examining the old rug, say "A dusty rug that makes your nose feel itchy.".
 [ TV ]
 A TV is a switched off device in the Living Room. It is fixed in place.
 After switching on the TV:
