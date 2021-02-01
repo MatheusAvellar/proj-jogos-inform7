@@ -1,14 +1,4 @@
-"Untitled" by Tokyo Drift
-
-[
-	Regras:
-		[-] 1 room por aluno tem que ter alguma coisa para fazer na história
-		[√] 2 "Person" ativos no jogo
-		[√] 1 porta trancada
-		[√] 2 container (Cupboard in Living Room, Toolbox in Garage)
-		[√] 2 supporter (Sofa in Living Room, Work Bench in Garage)
-]
-
+"Saquarema Adventures" by Tokyo Drift
 
 Chapter 1 New Kinds
 
