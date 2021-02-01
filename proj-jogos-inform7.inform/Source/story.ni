@@ -183,8 +183,8 @@ Large Bedroom is a room, north of Upper Hall. "This is the largest bedroom of th
 
 [[ Medium Bedroom ]]
 Medium Bedroom is a room. "Another bedroom. As expected, there are a lot of mattresses on the floor.[paragraph break]To the west you see the Upper Hall.".
-Bedroom door is a closed door. The Bedroom door is west of the Medium Bedroom and east of the Upper Hall. Bedroom door is locked.
-The matching key of the Bedroom door is Medium bedroom key.
+Medium bedroom door is a closed door. The Medium bedroom door is west of the Medium Bedroom and east of the Upper Hall. Medium bedroom door is locked.
+The matching key of the Medium bedroom door is Medium bedroom key.
 
 [[ Small Bedroom ]]
 Small Bedroom is a room, west of Upper Hall. "Seriously, I don't how they fit this many mattresses in this room. You can't even walk here. It's like the floor is made out of mattress.[paragraph break]To the east you see the Upper Hall.".
@@ -396,7 +396,7 @@ The Medium bedroom key is a thing. The Medium bedroom key can be found or lost. 
 
 Section 3.8 In the Medium Bedroom
 
-Before opening the Bedroom door:
+Before opening the Medium bedroom door:
 	now tried_to_enter_bedroom is true;
 	say "You try to open the door, but your Mother has taken the key. She is currently resting in the Large Bedroom.".
 
@@ -436,19 +436,28 @@ After asking the Aunt about "B64", say "Oh, he was such an amazing man. He was y
 The Mother is a woman.
 The Mother is on the King size bed. The King size bed is enterable and fixed in place. The indefinite article of the Mother is "your".
 
-Instead of examining the Mother when the Medium bedroom key is lost:
-	if has_been_in_lavabo is true:
+Instead of examining mother:
+	if medium bedroom key is lost:
+		say "You should ask her about the medium bedroom key.";
+	otherwise:
+		say "You already have the key. Just go to your bedroom.".
+
+Instead of asking mother about "key", try asking mother about "the medium bedroom key".
+Instead of asking mother about "the key", try asking mother about "the medium bedroom key".
+Instead of asking mother about "bedroom key", try asking mother about "the medium bedroom key".
+Instead of asking mother about "the bedroom key", try asking mother about "the medium bedroom key".
+Instead of asking mother about "medium bedroom key", try asking mother about "the medium bedroom key".
+After asking mother about "the medium bedroom key" when the Medium bedroom key is lost:
+	if has_cleaned_lavabo is true:
 		now the Medium bedroom key is found;
-		say "Finally, it was about time. The key in on the desk.";
-		move the Medium bedroom key to the Desk;
+		say "Finally, it was about time. Your mom gave you the bedroom key.";
+		now player carries medium bedroom key;
 	otherwise:
 		if tried_to_enter_bedroom is true:
 			say "She says you have to clean the lavabo before you sleep. Only then the she'll give you the key.";
 		otherwise:
 			say "Go clean the Lavabo before doing anything else. Then you can do whatever you want.";
 
-Instead of examining the Mother when the Medium bedroom key is found:
-	say "You can go to bed now.".
 
 
 Chapter 5 What Happens when entering
@@ -459,6 +468,10 @@ Being Outside the House ends when player is in Hall.
 
 Before taking the Main Key during Being Outside the House:
 	Say "You know your hand is going to smell of iron afterwards, but you pick up the key anyways.".
+	
+After going to medium bedroom:
+	say "You can finally rest here. Congratulations!";
+	end the story.
 
 When Being Outside the House ends:
 	Say "It feels good to leave the sunny outside.".
