@@ -110,7 +110,7 @@ Understand "clean [any room]" as cleaning it.
 
 Carry out cleaning:
 	if the noun is Lavabo:
-		if player carries sponge and player carries bleach bottle and player carries wiping cloth and player carries broken broom:
+		if player carries sponge and player carries bleach bottle and player carries wiping cloth and player carries broken broom and player carries brush:
 			if has_fixed_broom is true:
 				if player is in lavabo:
 					say "You cleaned it! Of course you didn't do a good job, but at least it's usable right now. Time to go to bed!";
@@ -403,6 +403,26 @@ Before opening the Bedroom door:
 [ Single Bed ]
 The pillow is on the Single bed. The Single bed is enterable and fixed in place. 
 The Single bed is in the Medium bedroom.
+
+Section 3.9 Kitchen
+
+
+[ Cabinets ]
+Cabinets  is an openable closed container in the Kitchen.
+Cabinets is fixed in place.
+A Brush is a thing. 
+A Knife is a thing.
+Brush and Knife are in Cabinets.
+Instead of examining the Brush:
+	if has_been_in_lavabo is true:
+		say "This brush might be useful to clean the Lavabo.";
+	otherwise:
+		say "This brush could to be used to clean something.".
+
+
+[ Kitchen Table ]
+Kitchen Table is a supporter in the garage.
+Instead of examining Kitchen Table, say "This Kitchen Table is a mess, I don't know how it's still standing.".
 
 Chapter 4 People
 
