@@ -3,8 +3,8 @@
 [
 	Regras:
 		[-] 1 room por aluno tem que ter alguma coisa para fazer na história
-		[-] 2 "Person" ativos no jogo
-		[-] 1 porta trancada
+		[√] 2 "Person" ativos no jogo
+		[√] 1 porta trancada
 		[√] 2 container (Cupboard in Living Room, Toolbox in Garage)
 		[√] 2 supporter (Sofa in Living Room, Work Bench in Garage)
 ]
@@ -91,7 +91,7 @@ Understand "fix [something] with [something]" as fixing it with.
 Carry out fixing:
 	if the noun is Broken Broom:
 		if has_fixed_broom is false:
-			if the second noun is Silver Tape:			
+			if the second noun is Silver Tape:
 				say "You fixed the broom.";
 				now has_fixed_broom is true;
 				now player carries the broken broom;
@@ -112,7 +112,7 @@ Carry out cleaning:
 	if the noun is Lavabo:
 		if player carries sponge and player carries bleach bottle and player carries wiping cloth and player carries broken broom:
 			if has_fixed_broom is true:
-				if player is in lavabo:				
+				if player is in lavabo:
 					say "You cleaned it! Of course you didn't do a good job, but at least it's usable right now. Time to go to bed!";
 					now has_cleaned_lavabo is true;
 				otherwise: 
@@ -176,13 +176,15 @@ After looking when player is in lavabo:
 
 [ Second Floor ]
 [[ Upper Hall ]]
-Upper Hall is a room. "To the west you see the Smal Bedroom. To the north you see the Large Bedroom. To the eest you see the Medium Bedroom. To the south there's the Bathroom."
+Upper Hall is a room. "To the west you see the Small Bedroom. To the north you see the Large Bedroom. To the east you see the Medium Bedroom. To the south there's the Bathroom."
 
 [[ Large Bedroom ]]
 Large Bedroom is a room, north of Upper Hall. "This is the largest bedroom of the house. You can see some beds and a bathroom. I guess this bedroom is restricted to the owners of the house.[paragraph break]To the west you see the Inner Bathroom. To the south you can see the Upper Hall.".
 
 [[ Medium Bedroom ]]
-Medium Bedroom is a room, east of Upper Hall. "Another bedroom. As expected, there are a lot of mattresses on the floor.[paragraph break]To the west you see the Upper Hall.".
+Medium Bedroom is a room. "Another bedroom. As expected, there are a lot of mattresses on the floor.[paragraph break]To the west you see the Upper Hall.".
+Bedroom door is a closed door. The Bedroom door is west of the Medium Bedroom and east of the Upper Hall. Bedroom door is locked.
+The matching key of the Bedroom door is Medium bedroom key.
 
 [[ Small Bedroom ]]
 Small Bedroom is a room, west of Upper Hall. "Seriously, I don't how they fit this many mattresses in this room. You can't even walk here. It's like the floor is made out of mattress.[paragraph break]To the east you see the Upper Hall.".
@@ -254,8 +256,7 @@ Instead of examining the Reclining chair, say "A creaky old reclining chair."
 
 [ Rug ]
 An Old rug is a thing in the Living Room.
-Instead of examining the old rug, say "A dusty rug that makes your nose feel itchy."
-
+Instead of examining the old rthing
 [ TV ]
 A TV is a switched off device in the Living Room. It is fixed in place.
 After switching on the TV:
@@ -382,6 +383,27 @@ Instead of examining the Dining table:
 		say "You also see a Sponge on the Dining table. You could use it to clean this plate later, or use it to clean something else. You should take it with you.";
 	move the Sponge to the Dining room;
 
+Section 3.7 In the Large Bedroom
+
+[ King size bed ]
+King size bed is a thing in the Large Bedroom. The King size bed is enterable. It is fixed in place.
+
+[ Desk ]
+A Desk is a thing in the Large Bedroom. The bed is fixed in place.
+
+[ Medium bedroom key ]
+The Medium bedroom key is a thing. The Medium bedroom key can be found or lost. The Medium bedroom key is lost.
+
+Section 3.8 In the Medium Bedroom
+
+Before opening the Bedroom door:
+	now tried_to_enter_bedroom is true;
+	say "You try to open the door, but your Mother has taken the key. She is currently resting in the Large Bedroom.".
+
+[ Single Bed ]
+The pillow is on the Single bed. The Single bed is enterable and fixed in place. 
+The Single bed is in the Medium bedroom.
+
 Chapter 4 People
 
 [ Aunt (Living Room) ]
@@ -389,6 +411,25 @@ The Aunt is a woman. "Your old aunt sleeps quietly on her creaky recliner."
 The Aunt is on the Reclining chair. The indefinite article of the aunt is "your".
 Instead of examining the aunt, say "You don't really know how old your aunt is, but you're pretty sure she's over 100."
 After asking the Aunt about "B64", say "Oh, he was such an amazing man. He was your great-great grandfather. His name was Breno and he was born in 1864. We used to play so many games together... I recall his favourite game had an incredibly weird but surely remarkable name: aHR0cHM6Ly95b3V0dS5iZS95VTRaWTAybFhEawo="
+
+[ Mother (Large Bedroom) ]
+The Mother is a woman.
+The Mother is on the King size bed. The King size bed is enterable and fixed in place. The indefinite article of the Mother is "your".
+
+Instead of examining the Mother when the Medium bedroom key is lost:
+	if has_been_in_lavabo is true:
+		now the Medium bedroom key is found;
+		say "Finally, it was about time. The key in on the desk.";
+		move the Medium bedroom key to the Desk;
+	otherwise:
+		if tried_to_enter_bedroom is true:
+			say "She says you have to clean the lavabo before you sleep. Only then the she'll give you the key.";
+		otherwise:
+			say "Go clean the Lavabo before doing anything else. Then you can do whatever you want.";
+
+Instead of examining the Mother when the Medium bedroom key is found:
+	say "You can go to bed now.".
+
 
 Chapter 5 What Happens when entering
 
@@ -409,7 +450,16 @@ When play begins:
 	now the time of day is 1:12 PM;
 	Say "The afternoon is incredibly hot as the sun shines strongly on the lawn.".
 
-Chapter 6 Variables
+Chapter 6 After cleaning the lavabo
+
+Dirty lavabo is a Scene.
+Dirty lavabo begins when play begins.
+Dirty lavabo ends when has_cleaned_lavabo is true;
+
+When Dirty lavabo ends:
+	say "You can finally go to the Medium bedroom to have some rest. But get the key with your Mother before.".
+
+Chapter 7 Variables
 
 has_been_in_living_room is initially false.
 has_cleaned_lavabo is initially false.
@@ -417,3 +467,4 @@ has_been_in_lavabo is initially false.
 has_been_in_roof is initially false.
 has_fixed_broom is initially false.
 has_found_spider is initially false.
+tried_to_enter_bedroom is initially false.
