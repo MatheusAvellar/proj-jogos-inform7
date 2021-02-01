@@ -138,7 +138,9 @@ After going to the Living Room:
 Garage is a room, west of Living Room. "I don't know if we could even call this place a garage, it's crowded with boxes. There's no way to put a car in here. Beyond all this trash, maybe something can be useful.[paragraph break]To the north you see the kitchen. To the east is the living room.".
 
 [[ Kitchen ]]
-Kitchen is a room, north of garage. "To the south you see the garage. To the east there's the dinning room.".
+Kitchen is a room, north of garage."The Kitchen has an antique look and it's grey with dust. There are cabinets in the wall and a kitchen table right in the middle of it. You see webs all around the corners."
+The description of the Cabinets is "The Cabinets creak as you open, just to reveal a wooden Brush and some old crockery, maybe there is a thing or two that we can use"
+
 
 [[ Dining Room ]]
 Dining Room is a room, east of kitchen, north of Living Room. "The dining room is decorated with furniture from the 60's.[paragraph break]To the west you see the kitchen. To the south there's the living room.".
@@ -342,6 +344,26 @@ Instead of examining Silver Tape:
 		say "Maybe it'll be useful to fix the broken broom.";
 	otherwise:
 		say "It's a great tool to fix things.".
+		
+
+
+Section 3.6 Kitchen
+
+[ Cabinets ]
+Cabinets  is an openable closed container in the Kitchen.
+A Brush is a thing. 
+A Knife is a thing.
+Brush and Knife are in Cabinets.
+Instead of examining the Brush:
+	if has_been_in_lavabo is true:
+		say "This Brush might be useful to clean the Lavabo.";
+	otherwise:
+		say "This Brush used to be in the Lavabo .".
+
+
+[ Kitchen Table ]
+Kitchen Table is a supporter in the garage.
+Instead of examining Kitchen Table, say "This Kitchen Table is a mess, i don't know how it's still standing.".
 
 Section 3.6 In the Dining room
 
